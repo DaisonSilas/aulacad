@@ -5,7 +5,7 @@ require_once "Conexao.php";
 class ClienteController
 {
     public static function inserir(Cliente $cliente){
-    $sql = "INSERT INTO cliente (nome, cpf, endereco, email, senha, telefone) VALUES (:nome, :cpf; :endereco, :email, :senha, :telefone)";
+    $sql = "INSERT INTO Cliente (nome, cpf, endereco, email, senha, telefone) VALUES (:nome, :cpf, :endereco, :email, :senha, :telefone)";
 
 
     $db = Conexao::getInstance();
