@@ -1,3 +1,28 @@
+<?php
+require_once "../models/Cliente.php";
+require_once "../controllers/ClienteController.php";
+
+$cliente = new Cliente();
+
+if(isset($_POST['salvar'])){
+    $cliente->setId(0);
+    $cliente->setNome ($_POST['nome']);
+    $cliente->setCpf($_POST['cpf']) ;
+    $cliente->setEndereco($_POST['endereco']);
+    $cliente->setEmail($_POST['email']);
+    $cliente->setSenha(md5($_POST['senha']));
+    $cliente->setTelefone ($_POST['telefone']);
+
+    echo ClienteController::inserir($cliente);
+        //echo var_dump($cliente);
+}
+
+?>
+
+
+
+
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -29,7 +54,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="">
+                    <form action="cadCliente.php" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-8">
                                 <label for="">Nome</label>
