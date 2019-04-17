@@ -13,8 +13,8 @@ if(isset($_POST['salvar'])){
     $cliente->setSenha(md5($_POST['senha']));
     $cliente->setTelefone ($_POST['telefone']);
 
-    echo ClienteController::inserir($cliente);
-        //echo var_dump($cliente);
+    ClienteController::inserir($cliente);
+    header('Location: listaClientes.php');
 }
 
 ?>
