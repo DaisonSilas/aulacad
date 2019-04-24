@@ -51,9 +51,9 @@ if (isset($_GET['excluir'])){
                     echo "<td>".$cliente->getNome()."</td>";
                     echo "<td>".$cliente->getEmail()."</td>";
                     echo "<td>";
-                    echo "<a href='' class='btn btn-info'>Vizualizar</a>";
+                    echo "<a href='visualizaCliente.php?id=".$cliente->getId()."' class='btn btn-info'>Vizualizar</a>";
                     echo " ";
-                    echo "<a href='' class='btn btn-primary'>Editar</a>";
+                    echo "<a href='cadCliente.php?id=".$cliente->getId()."' class='btn btn-primary'>Editar</a>";
                     echo " ";
                     echo "<a href='listaClientes.php?excluir=".$cliente->getId()."' class='btn btn-danger'>Excluir</a>";
                     echo " ";
