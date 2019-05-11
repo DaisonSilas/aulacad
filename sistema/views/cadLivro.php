@@ -4,10 +4,10 @@ require_once "../controllers/LivroController.php";
 require_once "../controllers/GeneroController.php";
 require_once "../controllers/EditoraController.php";
 
-$livro = new Cliente();
+$livro = new Livro();
 
 if(isset($_GET['id'])){
-    $livro = LivroController::buscarLivro($_GET['id']);
+    $livro = LivroController::visualiza($_GET['id']);
 }
 
 if(isset($_POST['salvar'])){
@@ -20,7 +20,7 @@ if(isset($_POST['salvar'])){
     $livro->setGenero(GeneroController::visualiza($_POST['genero']));
     $livro->setEditora(EditoraController::visualiza($_POST['editora']));
 
-    ClienteController::salvar($livro);
+    LivroController::salvar($livro);
     header('Location: listaLivros.php');
 }
 
@@ -44,8 +44,7 @@ if(isset($_POST['salvar'])){
 
 
 <div class="container-fluid">
-    <select name="genero" id="">
-        <option value="">
+
     <div class="row">
         <div class="col-md-2">
             <!--menu-->

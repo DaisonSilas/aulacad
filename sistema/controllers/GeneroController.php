@@ -1,5 +1,6 @@
 <?php
-
+require_once "Conexao.php";
+require_once "../models/Genero.php";
 
 class GeneroController
 {
@@ -12,7 +13,7 @@ class GeneroController
     }
 
     private static function alterar(Genero $genero){
-        $sql = "UPDATE genero SET nome = :nome, WHERE id=:id";
+        $sql = "UPDATE genero SET nome = :nome WHERE id=:id";
 
 
         $db = Conexao::getInstance();
@@ -51,7 +52,7 @@ class GeneroController
         return $arrRetorno;
     }
     private static  function popularGenero($itemLista){
-        $genero = new genero();
+        $genero = new Genero();
         $genero->setId($itemLista ['id']);
         $genero->setNome($itemLista ['nome']);
 

@@ -1,6 +1,7 @@
 <?php
-require_once "../modelsEditora.php";
-require_once "Editora.php.php";
+require_once "Conexao.php";
+require_once "../models/Editora.php";
+
 
 
 class EditoraController
@@ -14,7 +15,7 @@ class EditoraController
     }
 
     private static function alterar(Editora $editora){
-        $sql = "UPDATE editora SET nome = :nome, WHERE id=:id";
+        $sql = "UPDATE editora SET nome = :nome WHERE id=:id";
 
 
         $db = Conexao::getInstance();

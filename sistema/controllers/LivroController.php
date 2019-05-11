@@ -57,14 +57,32 @@ class LivroController
     }
 
     public static function trazerTodos(){
-        $sql = "SELECT l.*, g.descricao AS genero, e.descricao AS editora FROM livro l INNER JOIN genero g ON g.id = l.idgenero INNER JOIN editora e ON e.id = l.editora";
-
+        $sql = "SELECT l.*, g.nome AS genero, e.nome AS editora FROM livro l INNER JOIN genero g ON g.id = l.idgenero INNER JOIN editora e ON e.id = l.ideditora";
+        $db = Conexao::getInstance();
+        $stmt = $db->query($sql);
+        $listagem = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $arrRetorno = array();
         foreach ($listagem as $itemLista){
 
             $arrRetorno[] = self::popularLivro($itemLista);
         }
         return $arrRetorno;
+    }
+
+    public static function visualiza($id)
+    {
+        $sql = "SELECT l.*, g.nome AS genero, e.nome AS editora FROM livro l INNER JOIN genero g ON g.id = l.idgenero INNER JOIN editora e ON e.id = l.ideditora WHERE l.id =:id";
+        $db = Conexao::getInstance();
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        $listagem = $stmt->fetchAll(PDO::FETCH_ASSOC); //array associativo
+
+        $retorno = new genero();
+        foreach ($listagem as $itemLista) {
+            $retorno = self::popularLivro($itemLista);
+        }
+        return $retorno;
     }
 
     private static function popularLivro($itemlista){

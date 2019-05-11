@@ -40,7 +40,7 @@ if (isset($_GET['excluir'])){
                 <tr>
                     <th>Nome</th>
                     <th>Email</th>
-                    <th>-</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>

@@ -1,6 +1,6 @@
 <?php
 require_once 'Editora.php';
-require_once 'Genero.php]';
+require_once 'Genero.php';
 
 class Livro
 {
@@ -16,7 +16,7 @@ class Livro
     /**
      * Livro constructor.
    */
-    public function __construct($id, $genero, $editora)
+    public function __construct()
     {
         $this->id = 0;
         $this->genero = new Genero();

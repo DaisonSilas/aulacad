@@ -1,6 +1,6 @@
 <?php
-require_once "../models/Genero.php.php.php";
-require_once "../controllers/GeneroController.phpController.php";
+require_once "../models/Genero.php";
+require_once "../controllers/GeneroController.php";
 
 $genero = new Genero();
 
@@ -13,7 +13,7 @@ if(isset($_POST['salvar'])){
     $genero->setNome ($_POST['nome']);
 
     GeneroController::salvar($genero);
-    header('Location: listaGeneros.php');
+    header('Location: listaGenero.php');
 }
 
 

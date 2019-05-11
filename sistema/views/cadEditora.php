@@ -1,5 +1,5 @@
 <?php
-require_once "../models/Editora.php.php";
+require_once "../models/Editora.php";
 require_once "../controllers/EditoraController.php";
 
 $editora = new Editora();
@@ -13,7 +13,7 @@ if(isset($_POST['salvar'])){
     $editora->setNome ($_POST['nome']);
 
     EditoraController::salvar($editora);
-    header('Location: listaEditoras.php');
+    header('Location: listaEditora.php');
 }
 
 
