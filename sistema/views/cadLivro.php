@@ -72,6 +72,10 @@ if(isset($_POST['salvar'])){
                                 <label for="">Ano</label>
                                 <input type="text"class="form-control" placeholder="Ano" name="ano" value="<?php echo $livro->getAno();?>">
                             </div>
+                            <div class="form-group col-md-4">
+                                <label for="">Autor</label>
+                                <input type="text"class="form-control" placeholder="Ano" name="autor" value="<?php echo $livro->getAutor();?>">
+                            </div>
                             <div class="form-group col-md-12">
                                 <label for="">Descriação</label>
                                 <textarea name="descricao"id="" cols="30" rows="6" class="form-control"><?php echo $livro->getDescricao();?></textarea>
