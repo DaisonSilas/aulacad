@@ -66,7 +66,7 @@ class GeneroController
         $stmt->execute();
     }
 
-    public static function visualiza($id){
+    public static function visualizagenero($id){
         $sql= "SELECT * FROM genero WHERE id =:id";
         $db = Conexao::getInstance();
         $stmt = $db->prepare($sql);

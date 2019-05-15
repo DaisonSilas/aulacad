@@ -43,7 +43,7 @@ if (isset($_GET['excluir'])){
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>Descrição</th>
+                    <th>Nome</th>
 
                     <th></th>
                 </tr>

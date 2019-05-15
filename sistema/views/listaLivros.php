@@ -38,8 +38,8 @@ if (isset($_GET['excluir'])){
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>Nome</th>
-                    <th>Email</th>
+                    <th>Titulo</th>
+                    <th>Autor</th>
                     <th></th>
                 </tr>
                 </thead>

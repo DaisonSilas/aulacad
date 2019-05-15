@@ -68,7 +68,7 @@ class EditoraController
         $stmt->execute();
     }
 
-    public static function visualiza($id){
+    public static function visualizaeditora($id){
         $sql= "SELECT * FROM editora WHERE id =:id";
         $db = Conexao::getInstance();
         $stmt = $db->prepare($sql);

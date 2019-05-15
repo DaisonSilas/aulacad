@@ -69,7 +69,7 @@ class LivroController
         return $arrRetorno;
     }
 
-    public static function visualiza($id)
+    public static function visualizalivro($id)
     {
         $sql = "SELECT l.*, g.nome AS genero, e.nome AS editora FROM livro l INNER JOIN genero g ON g.id = l.idgenero INNER JOIN editora e ON e.id = l.ideditora WHERE l.id =:id";
         $db = Conexao::getInstance();
