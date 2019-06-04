@@ -1,16 +1,12 @@
 <?php
-
 require_once "../controllers/LivroController.php";
-
 if (isset($_GET['excluir'])){
     LivroController::excluir($_GET['excluir']);
 }
-
 ?>
 
-
-    <!doctype html>
-    <html lang="pt-br">
+<!doctype html>
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -18,7 +14,6 @@ if (isset($_GET['excluir'])){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <title>Document</title>
-
 </head>
 <body>
 
@@ -26,21 +21,22 @@ if (isset($_GET['excluir'])){
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-2">
-            <!--menu-->
+            <!--Menu-->
             <?php
-            include_once "menu.php"
+            include_once "menu.php";
             ?>
         </div>
+
         <div class="col-md-10">
-            <!--Conteudo-->
+            <!--Conteúdo-->
             <br>
             <a href="cadLivro.php" class="btn btn-success">Novo</a>
             <table class="table table-hover">
                 <thead>
                 <tr>
-                    <th>Titulo</th>
+                    <th>Título</th>
                     <th>Autor</th>
-                    <th></th>
+                    <th>-</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -51,18 +47,16 @@ if (isset($_GET['excluir'])){
                     echo "<td>".$livro->getTitulo()."</td>";
                     echo "<td>".$livro->getAutor()."</td>";
                     echo "<td>";
-                    echo "<a href='visualizaLivro.php?id=".$livro->getId()."' class='btn btn-info'>Vizualizar</a>";
+                    echo "<a href='verLivro.php?id=".$livro->getId()."' class='btn btn-info'>Visualizar</a>";
                     echo " ";
                     echo "<a href='cadLivro.php?id=".$livro->getId()."' class='btn btn-primary'>Editar</a>";
                     echo " ";
-                    echo "<a href='listaLivros.php?excluir=".$livro->getId()."' class='btn btn-danger'>Excluir</a>";
-                    echo " ";
+                    echo "<a href='listaLivros.php?excluir=".$livro->getId().
+                        "' class='btn btn-danger'>Remover</a>";
                     echo "</td>";
                     echo "</tr>";
                 }
-
                 ?>
-
                 </tbody>
             </table>
 
@@ -74,4 +68,4 @@ if (isset($_GET['excluir'])){
 <script src="js/jquery-3.3.1.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
-    </html><?php
+</html>

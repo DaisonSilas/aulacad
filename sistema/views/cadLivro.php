@@ -3,14 +3,20 @@ require_once "../models/Livro.php";
 require_once "../controllers/LivroController.php";
 require_once "../controllers/GeneroController.php";
 require_once "../controllers/EditoraController.php";
-
 $livro = new Livro();
-
 if (isset($_GET['id'])){
-    $livro = LivroController::visualizalivro($_GET['id']);
+    $livro = LivroController::buscarLivro($_GET['id']);
 }
-
 if(isset($_POST['salvar'])){
+    $foto = $_FILES["capa"];
+    // Pega extensão da imagem
+    preg_match("/\.(gif|bmp|png|jpg|jpeg){1}$/i", $foto["name"], $ext);
+    // Gera um nome único para a imagem
+    $nome_imagem = md5(uniqid(time())) . "." . $ext[1];
+    // Caminho de onde ficará a imagem
+    $caminho_imagem = "images/" . $nome_imagem;
+    // Faz o upload da imagem para seu respectivo caminho
+    move_uploaded_file($foto["tmp_name"], $caminho_imagem);
     $livro->setId($_POST['id']);
     $livro->setTitulo($_POST['titulo']);
     $livro->setDescricao($_POST['descricao']);
@@ -19,12 +25,11 @@ if(isset($_POST['salvar'])){
     $livro->setAno($_POST['ano']);
     $livro->setGenero(GeneroController::visualizagenero($_POST['genero']));
     $livro->setEditora(EditoraController::visualizaeditora($_POST['editora']));
-
+    $livro->setCapaImagem($nome_imagem);
     LivroController::salvar($livro);
     header('Location:listaLivros.php');
     //echo var_dump($livro);
 }
-
 ?>
 
 <!doctype html>
@@ -56,7 +61,7 @@ if(isset($_POST['salvar'])){
                     <h3 class="text-center">Cadastro de livros</h3>
                 </div>
                 <div class="card-body">
-                    <form action="cadLivro.php" method="post">
+                    <form action="cadLivro.php" method="post" enctype="multipart/form-data">
                         <input type="hidden" name="id" value="<?php echo $livro->getId();?>">
                         <div class="form-row">
                             <div class="form-group col-md-8">
@@ -65,7 +70,7 @@ if(isset($_POST['salvar'])){
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="">Ano</label>
-                                <input type="text" class="form-control" placeholder="0000" name="ano" value="<?php echo $livro->getAno();?>">
+                                <input type="text" class="form-control" placeholder="1984" name="ano" value="<?php echo $livro->getAno();?>">
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="">Descrição</label>
@@ -73,20 +78,20 @@ if(isset($_POST['salvar'])){
                             </div>
                             <div class="form-group col-md-8">
                                 <label for="">Autor</label>
-                                <input type="text" class="form-control" placeholder="Autor" name="autor" value="<?php echo $livro->getAutor();?>">
+                                <input type="text" class="form-control" placeholder="Deitel" name="autor" value="<?php echo $livro->getAutor();?>">
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="">Valor</label>
-                                <input type="text" class="form-control" placeholder="00,00" name="valor" value="<?php echo $livro->getValor();?>">
+                                <input type="text" class="form-control" placeholder="50,00" name="valor" value="<?php echo $livro->getValor();?>">
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="">Genero</label>
                                 <select name="genero" id="" class="form-control">
                                     <?php
-                                    $listaGenero = GeneroController::trazerTodos();
-                                    foreach($listaGenero as $genero){
+                                    $listaGeneros = GeneroController::trazerTodos();
+                                    foreach($listaGeneros as $genero){
                                         if ($livro->getGenero()->getId() == $genero->getId()){
                                             echo "<option value = '" . $genero->getId() . "' selected>" . $genero->getNome() . "</option>";
                                         }else {
@@ -101,8 +106,8 @@ if(isset($_POST['salvar'])){
                                 <label for="">Editora</label>
                                 <select name="editora" id="" class="form-control">
                                     <?php
-                                    $listaEditora = EditoraController::trazerTodos();
-                                    foreach($listaEditora as $editora){
+                                    $listaEditoras = EditoraController::trazerTodos();
+                                    foreach($listaEditoras as $editora){
                                         if ($livro->getEditora()->getId() == $editora->getId()){
                                             echo "<option value = '".$editora->getId()."' selected>".$editora->getNome()."</option>";
                                         }else{
@@ -111,6 +116,10 @@ if(isset($_POST['salvar'])){
                                     }
                                     ?>
                                 </select>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="">Capa do livro</label>
+                                <input type="file" class="form-control" name="capa">
                             </div>
                             <button class="btn btn-primary" type="submit" name="salvar">Salvar</button>
                         </div><!--form-row-->

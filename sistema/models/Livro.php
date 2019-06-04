@@ -12,6 +12,7 @@ class Livro
     private $editora;
     private $valor;
     private $ano;
+    private $capaImagem;
 
     /**
      * Livro constructor.
@@ -150,6 +151,23 @@ class Livro
     {
         $this->ano = $ano;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCapaImagem()
+    {
+        return $this->capaImagem;
+    }
+
+    /**
+     * @param mixed $capaImagem
+     */
+    public function setCapaImagem($capaImagem)
+    {
+        $this->capaImagem = $capaImagem;
+    }
+
 
 
 }
