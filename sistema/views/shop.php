@@ -448,19 +448,19 @@ if (isset($_GET['genero'])){
                                     <div class="col-md-4 col-sm-6">
                                         <div class="single-banner">
                                             <div class="product-wrapper">
-                                                <a href="#" class="single-banner-image-wrapper">
+                                                <a href="detalharLivro.php" class="single-banner-image-wrapper">
                                                     <img alt="" src="images/<?php echo $livro->getCapaImagem();?>" width="150" height="220">
                                                 </a>
                                                 <div class="product-description">
                                                     <div class="functional-buttons">
-                                                        <a href="#" title="Add to Cart">
-                                                            <i class="fa fa-shopping-cart"></i>
+                                                      <!--  <a href="#" title="Add to Cart">
+                                                            <i class="fa fa-shopping-cart"></i> -->
                                                         </a>
-                                                        <a href="#" title="Add to Wishlist">
-                                                            <i class="fa fa-heart-o"></i>
+                                                       <!-- <a href="#" title="Add to Wishlist">
+                                                            <i class="fa fa-heart-o"></i> -->
                                                         </a>
-                                                        <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
-                                                            <i class="fa fa-compress"></i>
+                                                        <!-- <a href="#" title="Quick view" data-toggle="modal" data-target="#productModal">
+                                                            <i class="fa fa-compress"></i> -->
                                                         </a>
                                                     </div>
                                                 </div>
@@ -911,7 +911,7 @@ if (isset($_GET['genero'])){
             <div class="row">
                 <div class="col-md-3 col-sm-8">
                     <div class="footer-left">
-                        <a href="index.html">
+                        <a href="cadLivro.php">
                             <img src="img/logo-2.png" alt="">
                         </a>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
